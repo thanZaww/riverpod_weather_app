@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_weather_app/features/search_city/data/model/city_search_result.dart';
 import 'package:riverpod_weather_app/features/search_city/providers/city_search_provider.dart';
@@ -35,7 +36,8 @@ class CitySearchScreen extends ConsumerWidget {
               ),
             ),
           ),
-          _citySearchResultWidget(citySearchState),
+          Expanded(
+              child: Center(child: _citySearchResultWidget(citySearchState))),
         ],
       ),
     );
