@@ -1,4 +1,4 @@
-# riverpod_weather_app
+# Riverpod Weather App
 
 The weather app was written using the riverpod package.
 
