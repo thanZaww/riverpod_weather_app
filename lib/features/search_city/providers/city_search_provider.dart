@@ -5,7 +5,7 @@ import '../data/service/city_search_service.dart';
 import 'state/city_search_state.dart';
 
 class CitySearchProvider extends Notifier<CitySearchState> {
-  CitySearchState citySearchState = CitySearchLoading();
+  CitySearchState citySearchState = CitySearchForm();
   @override
   build() {
     return citySearchState;
@@ -16,7 +16,17 @@ class CitySearchProvider extends Notifier<CitySearchState> {
 
   void searchCity(String name) async {
     citySearchState = CitySearchLoading();
-    final citySerachResult = await _citySearchService.searchCity(
-        name: name, count: 10, language: 'en', format: 'json');
+    try {
+      final citySearchReslut = await _citySearchService.searchCity(
+          name: name, count: 10, language: 'en', format: 'json');
+      citySearchState = CitySearchSuccess(citySearchReslut);
+    } catch (e) {
+      citySearchState = CitySearchFailed(e.toString());
+    }
   }
 }
+
+final citySearchProvider =
+    NotifierProvider<CitySearchProvider, CitySearchState>(
+  () => CitySearchProvider(),
+);
