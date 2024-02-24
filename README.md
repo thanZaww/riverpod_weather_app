@@ -1,6 +1,6 @@
 # riverpod_weather_app
 
-A new Flutter project.
+The weather app was written using the riverpod package.
 
 ## Getting Started
 
